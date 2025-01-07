@@ -14,6 +14,10 @@ namespace MyApp
 
             Console.WriteLine();
             Console.WriteLine("-----Task 2-----");
+            DisplaySomeChars();
+
+            Console.WriteLine();
+            Console.WriteLine("-----Task 3-----"); 
         }
 
         static void DisplayPersonalData()
@@ -34,5 +38,13 @@ namespace MyApp
             Console.WriteLine($"Personal number: {personalNumber}");
         }
 
+        static void DisplaySomeChars()
+        {
+            char a = 'a';
+            char b = 'b';
+            char c = 'c';
+            Console.WriteLine($"Chars in reversed order: {c}, {b}, {a}");
+
+        }
     }
 }
