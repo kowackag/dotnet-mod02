@@ -1,5 +1,4 @@
 ﻿using System;
-using FirstApp;
 
 namespace MyApp
 {
@@ -20,6 +19,10 @@ namespace MyApp
             Console.WriteLine();
             Console.WriteLine("-----Task 3-----");
             CountDiagonal();
+
+            Console.WriteLine();
+            Console.WriteLine("-----Task 4-----");
+            DisplayVariablesInfo();
         }
         static void DisplayPersonalData()
         {
@@ -81,6 +84,16 @@ namespace MyApp
             {
                 Console.WriteLine("Incorrect value. Task was ended");
             }
+        }
+
+        static void DisplayVariablesInfo()
+        {
+            int number = 10;
+            string title = "Szkoła Dotneta";
+            double floatNumber = 12.5;
+            Console.WriteLine($"Number: {number} - Type {number.GetType()}");
+            Console.WriteLine($"Title: {title} - Type {title.GetType()}");
+            Console.WriteLine($"FloatNumber: {floatNumber} - Type {floatNumber.GetType()}");
         }
     }
 }
