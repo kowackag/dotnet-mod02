@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static System.Formats.Asn1.AsnWriter;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MyApp
@@ -8,7 +9,6 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            
             Console.WriteLine("Tasks modul 02 lesson 07");
             Console.WriteLine();
 
@@ -25,7 +25,7 @@ namespace MyApp
 
             Console.WriteLine();
             Console.WriteLine("-----Task 4-----");
-            //DisplayVariablesInfo();
+            DisplayIfIsLeapYear();
 
             Console.WriteLine();
             Console.WriteLine("-----Task 5-----");
@@ -45,7 +45,7 @@ namespace MyApp
 
             Console.WriteLine();
             Console.WriteLine("-----Task 9-----");
-           
+            CheckTheWeather();
 
             Console.WriteLine();
             Console.WriteLine("-----Task 10-----");
@@ -57,6 +57,7 @@ namespace MyApp
 
             Console.WriteLine();
             Console.WriteLine("-----Task 12-----");
+            DisplayMathScore();
         }
         static void CheckIfNumberAreEqual()
         {
@@ -108,14 +109,11 @@ namespace MyApp
             Console.WriteLine("The given number is neither positive nor odd. It is zero");
         }
 
-        static void DisplayVariablesInfo()
+        static void DisplayIfIsLeapYear()
         {
-            int number = 10;
-            string title = "Szkoła Dotneta";
-            double floatNumber = 12.5;
-            Console.WriteLine($"Number: {number} - Type {number.GetType()}");
-            Console.WriteLine($"Title: {title} - Type {title.GetType()}");
-            Console.WriteLine($"FloatNumber: {floatNumber} - Type {floatNumber.GetType()}");
+            Console.WriteLine("Enter the year to check if it is leap");
+            int inputYear = GetIntegerNumber();
+            Console.WriteLine($"The given year is leap: {DateTime.IsLeapYear(inputYear)}");
         }
 
         static void CheckIfCanBeAuthoritive()
@@ -215,6 +213,36 @@ namespace MyApp
             }
         }
 
+        static void CheckTheWeather()
+        {
+            Console.WriteLine("Enter the temperature in full Celsius");
+            int temp = GetIntegerNumber();
+
+            if (temp < 0)
+            {
+                Console.WriteLine("cholernie piździ");
+            }
+            else if (temp >= 0 && temp < 10)
+            {
+                Console.WriteLine("zimno");
+            }
+            else if (temp >= 10 && temp < 20)
+            {
+                Console.WriteLine("chłodno");
+            }
+            else if (temp >= 20 && temp < 30)
+            {
+                Console.WriteLine("w sam raz");
+            }
+            else if (temp >= 30 && temp < 40)
+            {
+                Console.WriteLine("zaczyna być słabo, bo gorąco");
+            } 
+            else
+            {
+                Console.WriteLine("a weź wyprowadzam się na Alaskę.");
+            }
+        }
         static void DisplayScore()
         {
             Console.WriteLine("Enter the score 1-6");
@@ -252,6 +280,60 @@ namespace MyApp
                     break;
             }
             Console.WriteLine($"Your score in polish is: {score}");
+        }
+
+        static void DisplayMathScore()
+        {
+            Console.WriteLine("Enter the number A:");
+            string? firstNumberString = Console.ReadLine();
+            bool isCorrectNumber = double.TryParse(firstNumberString, out double firstNumber);
+            while (!isCorrectNumber)
+            {
+                Console.WriteLine("Incorrect number. Please enter the correct number: ");
+                firstNumberString = Console.ReadLine();
+                isCorrectNumber = double.TryParse(firstNumberString, out firstNumber);
+            }
+
+            Console.WriteLine("Enter the number B:");
+            string? secondNumberString = Console.ReadLine();
+            isCorrectNumber = double.TryParse(secondNumberString, out double secondNumber);
+            while (!isCorrectNumber)
+            {
+                Console.WriteLine("Incorrect number. Please enter the correct number: ");
+                firstNumberString = Console.ReadLine();
+                isCorrectNumber = double.TryParse(firstNumberString, out secondNumber);
+            }
+
+            Console.WriteLine("Type opperation: 1 => addition, 2=> substraction, 3=>multiplying, 4=> division, another else quit");
+
+            string? operation = Console.ReadLine();
+
+            switch (operation)
+            {
+                case "1":
+                    Console.WriteLine($"The score is: {firstNumber + secondNumber} ");
+                    break;
+                case "2":
+                    Console.WriteLine($"The score is: {firstNumber - secondNumber} ");
+                    break;
+                case "3":
+                    Console.WriteLine($"The score is: {firstNumber * secondNumber} ");
+                    break;
+                case "4":
+                    {
+                        if (secondNumber != 0)
+                        {
+                            Console.WriteLine($"The score is: {firstNumber / secondNumber} ");
+                        } else
+                        {
+                            Console.WriteLine($"You can not divide by zero");
+                        }
+                    break;
+                    }
+                default:
+                    Console.WriteLine("Good by");
+                    break;
+            }
         }
         //helpers
 
