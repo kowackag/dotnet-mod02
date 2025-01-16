@@ -22,11 +22,11 @@ namespace MyApp
 
             Console.WriteLine();
             Console.WriteLine("-----Task 3-----");
-           
+            Task03();
 
             Console.WriteLine();
             Console.WriteLine("-----Task 4-----");
-          
+            Task04();
 
             Console.WriteLine();
             Console.WriteLine("-----Task 5-----");
@@ -82,12 +82,41 @@ namespace MyApp
 
         static void Task03()
         {
-        
-        }
+            int last = 1;
+            int prev = 0;
+            string score = "1";
+            List<int> chain =new List<int>();
 
+         
+            while (last <= 200000000) {
+                int copyLast = last;
+                score = score + last.ToString();
+                chain.Add(copyLast);
+                last = last + prev;
+                prev = copyLast;
+            }
+ 
+            Console.WriteLine("chain:" + string.Join(',', chain));
+        }   
+       
         static void Task04()
         {
-         
+            Console.WriteLine("Enter integer number a:");
+            int max = GetIntegerNumber();
+            Console.WriteLine();
+            int print = 1;
+            for (int i = 1; print <= max; i++)
+            {
+                for (int j=1;j<=i;j++)
+                {
+                    if (print <= max)
+                    {
+                        Console.Write(print + " ");
+                        print++;
+                    }
+                }
+                Console.WriteLine();     
+            }
         }
 
         static void Task05()
