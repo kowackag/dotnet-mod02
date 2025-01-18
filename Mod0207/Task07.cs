@@ -59,6 +59,7 @@ namespace MyApp
             Console.WriteLine("-----Task 12-----");
             DisplayMathScore();
         }
+
         static void CheckIfNumberAreEqual()
         {
             Console.WriteLine("Enter integer number a:");
@@ -66,7 +67,7 @@ namespace MyApp
             Console.WriteLine("Enter integer number b:");
             int b = GetIntegerNumber();
 
-            if (a==b)
+            if (a == b)
             {
                 Console.WriteLine("Number a and number b are equal");
             }
@@ -120,8 +121,30 @@ namespace MyApp
         {
             Console.WriteLine("Give me your years");
             int years = GetIntegerNumber();
-            Console.WriteLine($"You can be authoritive: {years >= 21}");
+            List<string> authorities = new List<string>();
+            if (years >= 21)
+            {
+                authorities.Add("representative");
+                authorities.Add("prime minister");
+            }
+            if (years >= 30)
+            {
+                authorities.Add("senator");
+            }
+            if (years >= 35)
+            {
+                authorities.Add("president");
+            }
+            if (authorities.Count > 0)
+            {
+                Console.WriteLine($"You can be authoritive: {string.Join(",", authorities)}");
+            } 
+            else
+            {
+                Console.WriteLine($"You can not be authoritive");
+            }
         }
+
         static void CheckHeight()
         {
             Console.WriteLine("Enter your height in cm");
@@ -130,7 +153,7 @@ namespace MyApp
             {
                 Console.WriteLine("You are dwarf");
             }
-            else if ( height >=140 && height <160)
+            else if ( height >= 140 && height < 160)
             {
                 Console.WriteLine("You are short");
             }
@@ -155,7 +178,7 @@ namespace MyApp
             Console.WriteLine("Enter integer number c:");
             int c = GetIntegerNumber();
 
-            List<int> listNumbers = new List<int>() { a,b,c};
+            List<int> listNumbers = [a, b, c];
             listNumbers.Sort();
 
             Console.WriteLine($"The Bigest number is: {listNumbers[2]}");
@@ -171,12 +194,12 @@ namespace MyApp
             int chemist = GetIntegerNumber();
 
             bool canBeTheStudent = false;
-            if (math > 70 && physics > 55 && chemist>45 && (math + chemist+ physics) > 180)
+            if (math > 70 && physics > 55 && chemist > 45 && (math + chemist + physics) > 180)
             {
                 canBeTheStudent = true;
             }
        
-            if (math + physics >150 || math + chemist >150)
+            if (math + physics > 150 || math + chemist > 150)
             {
                 canBeTheStudent = true;
             }
@@ -243,6 +266,7 @@ namespace MyApp
                 Console.WriteLine("a weź wyprowadzam się na Alaskę.");
             }
         }
+
         static void DisplayScore()
         {
             Console.WriteLine("Enter the score 1-6");
@@ -335,6 +359,7 @@ namespace MyApp
                     break;
             }
         }
+
         //helpers
 
         static int GetIntegerNumber()
