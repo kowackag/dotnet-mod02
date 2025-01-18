@@ -52,7 +52,6 @@ namespace MyApp
             char b = 'b';
             char c = 'c';
             Console.WriteLine($"Chars in reversed order: {c}, {b}, {a}");
-
         }
 
         static void CountDiagonal()
@@ -142,7 +141,7 @@ namespace MyApp
             Console.WriteLine("Enter your height in cm");
             string? heightString = Console.ReadLine();
             int height = 0;
-            bool isCorrectHeight = int.TryParse(heightString, out height) && height > 80 && height <250;
+            bool isCorrectHeight = int.TryParse(heightString, out height) && height > 80 && height < 250;
 
             while (!isCorrectHeight)
             {
