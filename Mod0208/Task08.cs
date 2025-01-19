@@ -12,7 +12,6 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            Task10();
             Console.WriteLine("Tasks modul 02 lesson 08");
             Console.WriteLine();
             Console.WriteLine("-----Task 1-----");
@@ -52,21 +51,27 @@ namespace MyApp
 
             Console.WriteLine();
             Console.WriteLine("-----Task 10-----");
-
+            Task10();
         }
         static void Task01()
         {
-            int primeNumbersAmmount = 0;
+            int primeNumbersCount = 0;
             for (int i = 1; i <= 100; i++)
             {
-                int n = 0;
+                int dividersCount = 0;
                 for (int j = 1; j <= i; j++)
                 {
-                    if (i % j == 0) n++;
+                    if (i % j == 0)
+                    {
+                        dividersCount++;
+                    }
                 }
-                if (n == 2) primeNumbersAmmount++;
+                if (dividersCount == 2)
+                {
+                    primeNumbersCount++;
+                }
             }
-            Console.WriteLine($"Prime numbers is: {primeNumbersAmmount}");
+            Console.WriteLine($"Prime numbers is: {primeNumbersCount}");
         }
 
         static void Task02()
@@ -75,7 +80,10 @@ namespace MyApp
             List<string> list = new List<string>();
             do
             {
-                if (i % 2 == 0) list.Add(i.ToString());
+                if (i % 2 == 0)
+                { 
+                    list.Add(i.ToString()); 
+                }
                 i++;
             } while (i <= 1000);
 
@@ -86,14 +94,12 @@ namespace MyApp
         {
             int last = 1;
             int prev = 0;
-            string score = "1";
             List<int> chain = new List<int>();
 
 
             while (last <= 200000000)
             {
                 int copyLast = last;
-                score = score + last.ToString();
                 chain.Add(copyLast);
                 last = last + prev;
                 prev = copyLast;
@@ -132,20 +138,27 @@ namespace MyApp
 
         static void Task06()
         {
-            float sum = 0;
+            double sum = 0;
             for (int i = 1; i <= 20; i++)
             {
-                sum = sum + (1f / i);
+                sum = sum + (1.0 / i);
             }
             Console.WriteLine($"The score is: {sum}");
         }
 
         static void Task07()
         {
-            int number = 13;
-            for (int i = 1; i <= number; i += 2)
+            Console.WriteLine("Enter integer number");
+            int number = GetIntegerNumber();
+
+            int step = 2;
+            if (number % 2 == 0)
             {
-                int emptyNo = (number - i) / 2;
+                step = 1;
+            }
+            for (int i = 1; i <= number; i += step)
+            {
+                int emptyNo = (number - i) / step;
                 for (int j = 1; j <= emptyNo; j++)
                 {
                     Console.Write(" ");
@@ -153,6 +166,10 @@ namespace MyApp
                 for (int j = 1; j <= i; j++)
                 {
                     Console.Write("*");
+                    if (j != i && step == 1)
+                    {
+                        Console.Write(" ");
+                    }
                 }
                 for (int k = 1; k <= emptyNo; k++)
                 {
@@ -160,9 +177,9 @@ namespace MyApp
                 }
                 Console.WriteLine("");
             }
-            for (int i = number - 2; i >= 1; i -= 2)
+            for (int i = number - step; i >= 1; i -= step)
             {
-                int emptyNo = (number - i) / 2;
+                int emptyNo = (number - i) / step;
                 for (int j = 1; j <= emptyNo; j++)
                 {
                     Console.Write(" ");
@@ -170,6 +187,10 @@ namespace MyApp
                 for (int j = 1; j <= i; j++)
                 {
                     Console.Write("*");
+                    if (j != i && step == 1)
+                    {
+                        Console.Write(" ");
+                    }
                 }
                 for (int k = 1; k <= emptyNo; k++)
                 {
@@ -185,7 +206,8 @@ namespace MyApp
             string? chain = Console.ReadLine();
             if (chain != null)
             {
-                Console.WriteLine($"Reverse: {string.Join("", chain.ToCharArray().Reverse())}");
+                var reversedChain = chain.Reverse();
+                Console.WriteLine($"Reverse: {string.Join("", reversedChain)}");
             }
             else
             {
@@ -215,8 +237,8 @@ namespace MyApp
             Console.WriteLine("Enter some integer");
             int numberB = GetIntegerNumber();
 
-            int num=0;
-            for (int i = 1; i <=numberA*numberB; i++)
+            int num = 0;
+            for (int i = 1; i <= numberA * numberB; i++)
             {
                 if ((i  % numberB) == 0 && (i % numberA == 0))
                 {
